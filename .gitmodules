@@ -1,0 +1,3 @@
+[submodule "BackEnd-Intellispace"]
+	path = BackEnd-Intellispace
+	url = https://github.com/C2-Devs/BackEnd-Intellispace.git
