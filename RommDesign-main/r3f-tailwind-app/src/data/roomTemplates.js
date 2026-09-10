@@ -1,0 +1,265 @@
+/**
+ * Room Templates — 4 pre-designed room layouts.
+ *
+ * Each template defines room geometry, color palette, and pre-placed furniture.
+ * Furniture entries reference IDs from the furnitureRegistry.
+ */
+import { generateId } from '../utils/idUtils';
+
+/**
+ * Helper to create a furniture placement entry.
+ */
+function f(registryId, position, rotation = [0, 0, 0], scale = [1, 1, 1]) {
+  return {
+    id: generateId(),
+    catalogItemId: registryId,
+    position,
+    rotation,
+    scale,
+    isLocked: false,
+    isVisible: true,
+    isColliding: false,
+  };
+}
+
+// ═══════════════════════════════════════════════════════════
+// Template 1: Modern Living Room
+// ═══════════════════════════════════════════════════════════
+const modernLivingRoom = {
+  id: 'modern-living-room',
+  name: 'Modern Living Room',
+  description: 'A spacious modern living room with contemporary furnishings',
+  room: {
+    width: 14,
+    depth: 10,
+    height: 3,
+    wallColor: '#8cbe5b',
+    floorColor: '#8B7355',
+    ceilingColor: '#fafafa',
+    wallThickness: 0.15,
+  },
+  windows: [
+    { wall: 'back', position: 0.3, width: 3, height: 2.2, sillHeight: 0.4 },
+    { wall: 'back', position: 0.7, width: 3, height: 2.2, sillHeight: 0.4 },
+  ],
+  doors: [
+    { wall: 'left', position: 0.2, width: 1.2, height: 2.4 }, // Main entrance
+    { wall: 'right', position: 0.5, width: 4, height: 2.6 }, // Large glass sliding door
+  ],
+  furniture: () => [
+    f('undefined', [-4.5, 0, 3.5], [-3.131, 0, -3.134]),
+    f('undefined', [0.25, 0.5, -1], [0, 1.105, 0]),
+    f('undefined', [0, 1.75, -4.9]),
+    f('undefined', [6.5, 0, -3.5], [0, -1.571, 0], [0.65, 0.65, 0.65]),
+    f('undefined', [0, 0.5, -4.75], [0, 0, 0], [0.9, 0.9, 0.9]),
+    f('undefined', [0.25, 0.75, -1], [0, 0, 0], [1.1, 1.1, 1.1]),
+    f('undefined', [0, 3, -0.5]),
+    f('undefined', [3, 0, -4.9], [0, 0, 0], [0.6, 0.6, 0.6]),
+    f('undefined', [4.75, 0, 3.25], [0, -0.785, 0]),
+    f('undefined', [1.5, 0.75, 4], [0, -0.785, 0]),
+    f('undefined', [-2.25, 0.25, 1.25], [0, 0, 0], [1.6, 1.6, 1.6]),
+    f('undefined', [-6.5, 0, -4.5]),
+    f('undefined', [-6.25, 0, -0.5], [0, 0, 0], [1.35, 1.35, 1.35]),
+    f('undefined', [0, 0.25, -4.75], [0, 0, 0], [1.1, 1.1, 1.1]),
+    f('undefined', [0.75, 0.5, -4.75], [0, 0, 0], [0.85, 0.85, 0.85]),
+    f('undefined', [-0.75, 0.5, -4.75], [0, 0, 0], [0.85, 0.85, 0.85]),
+    f('undefined', [6.25, 0, 2.75], [0, 0, 0], [1.1, 1.1, 1.1]),
+    f('undefined', [6.25, 0, 4], [0, 0, 0], [1.1, 1.1, 1.1]),
+    f('undefined', [0, 0, 0], [0, 0, 0], [0.8, 0.8, 0.8]),
+    f('undefined', [0, 0, 0]),
+    f('undefined', [-0.75, 0, 1.25], [0, 0, 0], [0.75, 0.75, 0.75]),
+    f('undefined', [0, 0.25, -0.5]),
+    f('undefined', [0, 0, 0]),
+    f('undefined', [1.5, 0, -0.5]),
+    f('undefined', [0, 0, -1]),
+    f('undefined', [-0.75, 0.25, -2], [0, 0, 0], [0.6, 0.6, 0.6]),
+    f('undefined', [-0.5, 0, -0.5]),
+    f('undefined', [0.25, 0, -2]),
+    f('undefined', [-0.25, 0.25, 0.75], [0, 0, 0], [0.8, 0.8, 0.8]),
+    f('undefined', [0, 0, 0]),
+  ],
+  lightPreset: 'day',
+};
+
+// ═══════════════════════════════════════════════════════════
+// Template 2: Scandinavian Bedroom
+// ═══════════════════════════════════════════════════════════
+const scandinavianBedroom = {
+  id: 'scandinavian-bedroom',
+  name: 'Scandinavian Bedroom',
+  description: 'A cozy Scandinavian-inspired bedroom with warm tones',
+  room: {
+    width: 9,
+    depth: 8,
+    height: 2.8,
+    wallColor: '#f8f4ef',
+    floorColor: '#d4b896',
+    ceilingColor: '#ffffff',
+    wallThickness: 0.12,
+    floorY: 0,
+    coordinateSystem: 'centered-xz',
+  },
+  windows: [
+    { wall: 'back', position: 0.5, width: 2.5, height: 1.8, sillHeight: 0.7 },
+    { wall: 'right', position: 0.3, width: 1.2, height: 1.8, sillHeight: 0.7 },
+  ],
+  doors: [
+    { wall: 'front', position: 0.7, width: 1, height: 2.2 },
+    { wall: 'left', position: 0.3, width: 0.9, height: 2.2 }, // Ensuite door
+  ],
+  furniture: () => [
+    f('undefined', [0, 0, -2.5]),
+    f('undefined', [-2.2, 0, -3]),
+    f('undefined', [2.2, 0, -3]),
+    f('undefined', [-2.2, 0.5, -3]),
+    f('undefined', [2.2, 0.5, -3]),
+    f('undefined', [-3.8, 0, 1.5], [0, 1.571, 0]),
+    f('undefined', [3, 0, 2.5], [0, 3.142, 0]),
+    f('undefined', [3, 0, 1.2]),
+    f('undefined', [3.5, 0, -3]),
+    f('undefined', [0, 0.01, -1]),
+    f('undefined', [-4, 1.2, -1.5], [0, 1.571, 0]),
+    f('undefined', [0, 0, -3.85]),
+    f('undefined', [0, 2.5, 0]),
+  ],
+  lightPreset: 'warm',
+};
+
+// ═══════════════════════════════════════════════════════════
+// Template 3: Industrial Workspace
+// ═══════════════════════════════════════════════════════════
+const industrialWorkspace = {
+  id: 'industrial-workspace',
+  name: 'Industrial Workspace',
+  description: 'A modern industrial-style office with metal accents',
+  room: {
+    width: 12,
+    depth: 9,
+    height: 3.2,
+    wallColor: '#c4beb8',
+    floorColor: '#808080',
+    ceilingColor: '#e0e0e0',
+    wallThickness: 0.15,
+    floorY: 0,
+    coordinateSystem: 'centered-xz',
+  },
+  windows: [
+    { wall: 'back', position: 0.2, width: 2.5, height: 2.4, sillHeight: 0.4 },
+    { wall: 'back', position: 0.5, width: 2.5, height: 2.4, sillHeight: 0.4 },
+    { wall: 'back', position: 0.8, width: 2.5, height: 2.4, sillHeight: 0.4 },
+  ],
+  doors: [
+    { wall: 'front', position: 0.15, width: 1.5, height: 2.6 }, // Double doors
+  ],
+  furniture: () => [
+    f('undefined', [0, 0, -2.5]),
+    f('undefined', [0, 0.5, -0.75], [0, 3.142, 0]),
+    f('undefined', [0, 0.75, -2.7]),
+    f('undefined', [0.5, 0.75, -2.5]),
+    f('undefined', [-0.5, 0.75, -2.5]),
+    f('undefined', [-1, 0.75, -2.7]),
+    f('undefined', [-5.5, 0, -1], [0, 1.571, 0]),
+    f('undefined', [-4.75, 0, 1.5], [0, 1.571, 0]),
+    f('undefined', [5.5, 0, -2.5], [0, -1.571, 0]),
+    f('undefined', [5, 0, 3.5]),
+    f('undefined', [-5, 0, 3.5]),
+    f('undefined', [1.5, 0.75, -3]),
+    f('undefined', [2, 0, -0.5]),
+    f('undefined', [0, 2.8, -2]),
+    f('undefined', [0, 2.8, 2]),
+    f('undefined', [5.5, 1.5, 1], [0, -1.571, 0]),
+    f('undefined', [-0.3, 0.75, -1.5]),
+  ],
+  lightPreset: 'studio',
+};
+
+// ═══════════════════════════════════════════════════════════
+// Template 4: Modern Studio Apartment
+// ═══════════════════════════════════════════════════════════
+const modernStudioApartment = {
+  id: 'modern-studio',
+  name: 'Modern Studio Apartment',
+  description: 'An open-concept studio apartment with kitchen, living, and sleeping areas',
+  room: {
+    width: 16,
+    depth: 12,
+    height: 3,
+    wallColor: '#eee8e0',
+    floorColor: '#a08060',
+    ceilingColor: '#f5f5f5',
+    wallThickness: 0.15,
+    floorY: 0,
+    coordinateSystem: 'centered-xz',
+  },
+  windows: [
+    { wall: 'right', position: 0.25, width: 3, height: 2, sillHeight: 0.5 },
+    { wall: 'right', position: 0.75, width: 3, height: 2, sillHeight: 0.5 },
+    { wall: 'back', position: 0.8, width: 2, height: 1.8, sillHeight: 0.8 },
+  ],
+  doors: [
+    { wall: 'left', position: 0.15, width: 1.2, height: 2.2 }, // Entrance
+    { wall: 'back', position: 0.3, width: 3.5, height: 2.6 }, // Huge sliding glass door
+  ],
+  furniture: () => [
+    f('sink-kitchen-cabinet', [-5.5, 0, -5]),
+    f('gas-stove', [-3.5, 0, -5]),
+    f('fridge', [-7, 0, -5]),
+    f('double-door-upper-cabinet', [-5, 1.5, -5.5]),
+    f('wood-kitchen-table', [-4, 0, -1]),
+    f('wood-kitchen-chair', [-5, 0, -1], [0, 1.571, 0]),
+    f('wood-kitchen-chair', [-3, 0, -1], [0, -1.571, 0]),
+    f('wood-kitchen-chair', [-4, 0, -0.2], [0, 3.142, 0]),
+    f('wood-kitchen-chair', [-4, 0, -1.8]),
+    f('three-seater-couch', [2.5, 0, 0]),
+    f('rounded-coffee-table', [2.5, 0, 2]),
+    f('tv', [2.5, 0.8, -2.5]),
+    f('club-arm-chair', [5.5, 0, 1.5], [0, -1.571, 0]),
+    f('wool-carpet', [2.5, 0.01, 0.5]),
+    f('double-bed', [5, 0, 4], [0, -1.571, 0]),
+    f('night-stand', [6.5, 0, 3]),
+    f('bedside-lamp', [6.5, 0.5, 3]),
+    f('small-wardrobe', [7, 0, -1.5], [0, -1.571, 0]),
+    f('houseplant-tall', [-7, 0, 5]),
+    f('houseplant', [7, 0, 5]),
+    f('cactus', [1, 0.75, -3]),
+    f('light-chandelier', [-3.5, 2.5, -1]),
+    f('ceiling-lamp', [2.5, 2.6, 0]),
+    f('lamp', [6.5, 0, 5]),
+  ],
+  lightPreset: 'day',
+};
+
+// ═══════════════════════════════════════════════════════════
+// Exports
+// ═══════════════════════════════════════════════════════════
+export const ROOM_TEMPLATES = {
+  'modern-living-room': modernLivingRoom,
+  'scandinavian-bedroom': scandinavianBedroom,
+  'industrial-workspace': industrialWorkspace,
+  'modern-studio': modernStudioApartment,
+};
+
+export const TEMPLATE_LIST = Object.values(ROOM_TEMPLATES);
+
+export function getTemplate(id) {
+  return ROOM_TEMPLATES[id] || null;
+}
+
+/**
+ * Instantiate a template — generates fresh IDs for all furniture.
+ */
+export function instantiateTemplate(templateId) {
+  const template = ROOM_TEMPLATES[templateId];
+  if (!template) return null;
+  return {
+    ...template,
+    furniture: template.furniture(),
+  };
+}
+
+export default ROOM_TEMPLATES;
+
+// Prevent Vite from performing a full page reload when the server writes to this file
+if (import.meta.hot) {
+  import.meta.hot.accept();
+}
